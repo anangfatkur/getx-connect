@@ -22,4 +22,16 @@ class UserProvider extends GetConnect {
   Future<Response> deleteData(String id) {
     return delete(url + "users/$id.json");
   }
+
+  //Get patch //Edit user dari DB
+
+  Future<Response> editData(
+      String id, String name, String email, String phone) {
+    final body = json.encode({
+      "name": name,
+      "email": email,
+      "phone": phone,
+    });
+    return patch(url + "users/$id.json", body);
+  }
 }
